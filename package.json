@@ -1,0 +1,22 @@
+{
+  "name": "weight-balance-element",
+  "version": "0.0.1",
+  "description": "Airplane weight and balance form with chart",
+  "main": "dist/index.js",
+  "author": "Chris Nelson",
+  "license": "MIT",
+  "scripts": {
+    "build": "webpack",
+    "start": "live-server ."
+  },
+  "dependencies": {
+    "@polymer/iron-input": "^3.0.0-pre.19",
+    "@polymer/polymer": "^3.0.2",
+    "live-server": "^1.2.0",
+    "plotly.js": "^1.38.0",
+    "webpack": "^4.9.1"
+  },
+  "devDependencies": {
+    "webpack-cli": "^2.1.4"
+  }
+}

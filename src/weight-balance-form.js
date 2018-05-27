@@ -28,12 +28,20 @@ class WeightBalanceFormElement extends PolymerElement {
       totalWeight: {
         type: Number,
         notify: true
+      },
+      fuelWeight: {
+        type: Number,
+        value: 0
+      },
+      fuelMoment: {
+        type: Number,
+        value: 0
       }
     }
   }
   static get observers() {
     return [
-      '_stationsChanged(stations.*)',
+      '_stationsChanged(stations.*,fuelMoment,fuelWeight)',
       '_fuelAmountChanged(fuelAmount)'
     ]
   }
@@ -76,9 +84,6 @@ class WeightBalanceFormElement extends PolymerElement {
           <td>[[totalWeight]]</td>
           <td></td>
           <td>[[totalMoment]]</td>
-        </tr>
-        <tr>
-          <td colspan=4>CG: {{cg}}
         </tr>
       </tbody>
     </table>

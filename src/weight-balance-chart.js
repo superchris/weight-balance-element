@@ -43,6 +43,10 @@ class WeightBalanceChart extends PolymerElement {
   ready() {
 
     this.layout = {
+      height: 500,
+      showlegend: false,
+      width: 700,
+      autosize: false,
       yaxis: {
         range: [1000, 1800]
       },

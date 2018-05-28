@@ -24,3 +24,5 @@ Usage:
 </body>
 </html>
 ```
+
+## [Demo](http://superchris.github.io/weight-balance-element)

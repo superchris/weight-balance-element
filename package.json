@@ -9,6 +9,10 @@
     "build": "webpack",
     "start": "live-server ."
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/superchris/weight-balance-element.git"
+  },
   "dependencies": {
     "@polymer/iron-input": "^3.0.0-pre.19",
     "@polymer/polymer": "^3.0.2",

@@ -1,11 +1,12 @@
 {
   "name": "weight-balance-element",
-  "version": "0.0.1",
+  "version": "0.0.3",
   "description": "Airplane weight and balance form with chart",
   "main": "dist/index.js",
   "author": "Chris Nelson",
   "license": "MIT",
   "scripts": {
+    "prepublish": "webpack",
     "build": "webpack",
     "start": "live-server ."
   },

@@ -7,13 +7,22 @@
   "license": "MIT",
   "scripts": {
     "build": "webpack",
-    "start": "live-server ."
+    "start": "live-server .",
+    "pretest": "webpack --config test.config.js",
+    "test": "mocha-headless-chrome -a auto-open-devtools-for-tabs -v -f test.html",
+    "test-debug": "mocha-headless-chrome -v -f test.html"
   },
   "dependencies": {
     "@polymer/iron-input": "^3.0.0-pre.19",
+    "@polymer/lit-element": "^0.5.1",
     "@polymer/polymer": "^3.0.2",
+    "args": "^4.0.0",
+    "chai": "^4.1.2",
     "live-server": "^1.2.0",
+    "mocha": "^5.2.0",
+    "mocha-headless-chrome": "file:../mocha-headless-chrome",
     "plotly.js": "^1.38.0",
+    "puppeteer": "^1.5.0",
     "webpack": "^4.9.1"
   },
   "devDependencies": {

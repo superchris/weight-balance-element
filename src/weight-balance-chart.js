@@ -1,27 +1,33 @@
 import Plotly from 'plotly.js/dist/plotly-basic';
-import { PolymerElement, html } from '@polymer/polymer/polymer-element.js';
 
-class WeightBalanceChart extends PolymerElement {
+class WeightBalanceChart extends HTMLElement {
 
-  static get properties() {
-    return {
-      cg: Number,
-      weight: Number,
-      cgLimits: Array
-    }
-  }
-
-  static get observers() {
+  static get observedAttributes() {
     return [
-      '_redraw(weight, cg, cgLimits)'
+      'total-weight', 'cg', 'cg-limits'
     ]
   }
 
+  get totalWeight() {
+    return parseFloat(this.getAttribute('total-weight'));
+  }
 
-  _redraw(weight, cg, cgLimits) {
+  get cgLimits() {
+    return JSON.parse(this.getAttribute('cg-limits'));
+  }
+
+  get cg() {
+    return parseFloat(this.getAttribute('cg'));
+  }
+
+  attributeChangedCallback() {
+    this._redraw();
+  }
+
+  _redraw() {
     const marker = {
       x: [this.cg],
-      y: [this.weight],
+      y: [this.totalWeight],
       type: 'marker',
       marker: {
         symbol: "cross",
@@ -40,7 +46,7 @@ class WeightBalanceChart extends PolymerElement {
     Plotly.react(this, [marker, this.bounds], this.layout);
   }
 
-  ready() {
+  connectedCallback() {
 
     this.layout = {
       height: 500,
@@ -56,7 +62,7 @@ class WeightBalanceChart extends PolymerElement {
     };
 
     Plotly.newPlot(this, [], this.layout);
-
+    this._redraw();
   }
 }
 

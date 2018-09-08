@@ -1,44 +1,42 @@
-import { PolymerElement, html } from '@polymer/polymer/polymer-element.js';
+class WeightBalance extends HTMLElement {
 
-class WeightBalance extends PolymerElement {
-
-  static get properties() {
-    return {
-      stations: {
-        type: Array
-      },
-      basicEmptyWeight: {
-        type: Number
-      },
-      basicEmptyArm: {
-        type: Number
-      },
-      fuelArm: {
-        type: Number
-      },
-      cg: {
-        type: Number
-      },
-      totalWeight: Number,
-      cgLimits: Array
-    }
+  get basicEmptyWeight() {
+    return this.getAttribute("basic-empty-weight");
   }
 
-  static get template() {
-    return html`
-      <weight-balance-form
-        basic-empty-weight={{basicEmptyWeight}}
-        basic-empty-arm={{basicEmptyArm}}
-        stations={{stations}}
-        cg={{cg}}
-        cg-limits={{cgLimits}}
-        total-weight={{totalWeight}}
-        fuel-arm={{fuelArm}}></weight-balance-form>
-      <weight-balance-chart weight={{totalWeight}} cg={{cg}} cg-limits={{cgLimits}}></weight-balance-chart>
+  get basicEmptyArm() {
+    return this.getAttribute("basic-empty-arm");
+  }
 
-      CG: {{cg}} Total weight: {{totalWeight}}
+  get fuelArm() {
+    return this.getAttribute("fuel-arm");
+  }
+
+  get stations() {
+    return this.getAttribute("stations");
+  }
+
+  get cgLimits() {
+    return this.getAttribute("cg-limits");
+  }
+
+  connectedCallback() {
+    this.innerHTML = `
+    <weight-balance-form
+      basic-empty-weight='${this.basicEmptyWeight}'
+      basic-empty-arm='${this.basicEmptyArm}'
+      stations='${this.stations}'
+      fuel-arm='${this.fuelArm}'></weight-balance-form>
+    <weight-balance-chart cg-limits='${this.cgLimits}'></weight-balance-chart>
+
     `;
+    this.addEventListener("weightBalance", ({detail: { cg, totalWeight }}) => { 
+      const wbChart = this.querySelector('weight-balance-chart');
+      wbChart.setAttribute('cg', cg);
+      wbChart.setAttribute('total-weight', totalWeight);
+    });
   }
+  
 }
 
 export default WeightBalance;

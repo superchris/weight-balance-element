@@ -1,6 +1,6 @@
 {
   "name": "weight-balance-element",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Airplane weight and balance form with chart",
   "main": "dist/index.js",
   "author": "Chris Nelson",
@@ -22,6 +22,7 @@
     "webpack": "^4.9.1"
   },
   "devDependencies": {
+    "@webcomponents/webcomponentsjs": "^2.1.1",
     "webpack-cli": "^2.1.4"
   }
 }

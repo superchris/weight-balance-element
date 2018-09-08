@@ -105,6 +105,14 @@ class WeightBalanceFormElement extends PolymerElement {
       return total + (Number(station.weight) || 0);
     }, this.fuelWeight + this.basicEmptyWeight);
     this.cg = this.totalMoment / this.totalWeight;
+    this.dispatchEvent(new CustomEvent("weightBalance", { 
+      detail: { 
+        cg: this.cg,
+        totalWeight: this.totalWeight
+      },
+      bubbles: true,
+      composed: true
+    }));
   }
 }
 export default WeightBalanceFormElement
